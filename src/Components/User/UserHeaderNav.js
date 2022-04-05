@@ -15,20 +15,38 @@ const UserHeaderNav = () => {
   const mobile = useMedia('(max-width: 40rem)');
   const [mobileMenu, setMobileMenu] = React.useState(false);
 
-  const {pathname} = useLocation();
-  React.useEffect(()=>{
-    setMobileMenu(false);
-  },[pathname])
+  const btnRef = React.useRef();
 
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    setMobileMenu(false);
+  }, [pathname])
+
+
+  React.useEffect(() => {
+
+    const clickOutside = event => {
+      if (event.path[0] !== btnRef.current) {
+        console.log(event.path[0])
+        setMobileMenu(false);
+      }
+    };
+
+    document.body.addEventListener('click', clickOutside);
+
+    return () => document.body.removeEventListener('click', clickOutside);
+  }, []);
 
   return (
     <>
       {mobile && (
-      <button 
-      aria-label='menu' 
-      className={`${styles.mobileButton} ${mobileMenu && styles.mobileButtonActive}`}
-      onClick={() => setMobileMenu(!mobileMenu)}>
-      </button>
+        <button
+          aria-label='menu'
+          className={`${styles.mobileButton} ${mobileMenu && styles.mobileButtonActive}`}
+          ref={btnRef}
+          onClick={() => setMobileMenu(!mobileMenu)}
+        >
+        </button>
       )}
 
       <nav className={`${mobile ? styles.navMobile : styles.nav} ${mobileMenu && styles.navMobileActive}`}>
