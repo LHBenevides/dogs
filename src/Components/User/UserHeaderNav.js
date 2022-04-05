@@ -27,7 +27,6 @@ const UserHeaderNav = () => {
 
     const clickOutside = event => {
       if (event.path[0] !== btnRef.current) {
-        console.log(event.path[0])
         setMobileMenu(false);
       }
     };
