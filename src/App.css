@@ -13,11 +13,16 @@ body {
   font-family: var(--type-first);
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
   margin: 0px;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
   padding: 0px;
   margin: 0px;
@@ -28,7 +33,8 @@ img {
   max-width: 100%;
 }
 
-button, input {
+button,
+input {
   display: block;
   font-size: 1rem;
   font-family: var(--type-first);
@@ -91,3 +97,17 @@ a {
     transform: initial;
   }
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh + 10rem);
+}
+
+.appBody {
+  flex: 1;
+}
+
+/* .VictoryContainer {
+  height: initial !important;
+} */
