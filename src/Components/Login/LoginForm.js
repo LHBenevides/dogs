@@ -43,7 +43,7 @@ const LoginForm = () => {
         {loading ? <Button disabled>Carregando...</Button> : <Button>Entrar</Button>}
         <Error error={error} />
       </form>
-      <Link className={styles.recuperar} to="login/recuperar">Esqueceu a Senha?</Link>
+      <Link className={styles.recuperar} to="/login/recuperar">Esqueceu a Senha?</Link>
       <div className={styles.cadastro} >
         <h2 className={styles.subtitle} >Cadastre-se</h2>
         <p>Ainda não possui conta? Cadastre-se no site. </p>
