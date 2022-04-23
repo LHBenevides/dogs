@@ -5,8 +5,9 @@ import Input from '../Forms/Input';
 import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
 import Error from '../Helper/Error'
-import {PHOTO_POST} from '../../api/apiUrl'
-import {useNavigate} from 'react-router-dom'
+import { PHOTO_POST } from '../../api/apiUrl'
+import { useNavigate } from 'react-router-dom'
+import Head from '../Helper/Head';
 
 const UserPhotoPost = () => {
 
@@ -18,9 +19,9 @@ const UserPhotoPost = () => {
   const navigate = useNavigate();
 
 
-  React.useEffect(()=>{
-    if(data) navigate('/conta');
-  },[data, navigate])
+  React.useEffect(() => {
+    if (data) navigate('/conta');
+  }, [data, navigate])
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,7 +32,7 @@ const UserPhotoPost = () => {
     formData.append('idade', idade.value);
 
     const token = window.localStorage.getItem('token');
-    const {url, options} = PHOTO_POST(formData, token);
+    const { url, options } = PHOTO_POST(formData, token);
     request(url, options);
   }
 
@@ -44,6 +45,7 @@ const UserPhotoPost = () => {
 
   return (
     <section className={`${styles.photoPost} animeLeft`}>
+      <Head title="Poste Sua Foto" />
       <form onSubmit={handleSubmit}>
         <Input
           label="Nome"
@@ -70,12 +72,12 @@ const UserPhotoPost = () => {
           onChange={handleImgChange}
           className={styles.file}
         />
-        {loading ? <Button  disabled>Enviando...</Button> : <Button>Enviar</Button>}
+        {loading ? <Button disabled>Enviando...</Button> : <Button>Enviar</Button>}
         <Error error={error} />
-        
+
       </form>
       <div>
-        {img.preview && <div className={styles.preview} style={{backgroundImage: `url('${img.preview}')`}} ></div>}
+        {img.preview && <div className={styles.preview} style={{ backgroundImage: `url('${img.preview}')` }} ></div>}
       </div>
     </section>
   )

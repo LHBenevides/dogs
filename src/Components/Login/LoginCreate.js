@@ -6,6 +6,7 @@ import { USER_POST } from '../../api/apiUrl';
 import { UserContext } from '../../UserContext';
 import useFetch from '../../Hooks/useFetch';
 import Error from '../Helper/Error';
+import Head from '../Helper/Head';
 
 const LoginCreate = () => {
 
@@ -30,6 +31,7 @@ const LoginCreate = () => {
 
   return (
     <section className="animeLeft">
+      <Head title="Criar Conta" />
       <h1 className="title" >Cadastre-se</h1>
       <form onSubmit={handleSubmit}>
         <Input
@@ -50,8 +52,8 @@ const LoginCreate = () => {
           name="password"
           {...password}
         />
-        {loading ? <Button disabled >Cadastrando...</Button> : <Button>Cadastro</Button>} 
-        <Error error={error}/>
+        {loading ? <Button disabled >Cadastrando...</Button> : <Button>Cadastro</Button>}
+        <Error error={error} />
       </form>
     </section>
   )
